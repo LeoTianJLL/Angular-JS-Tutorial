@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app="myApp">
+
+<h2>3. Create New Directives</h2>
+You can invoke a directive by using:
+<ul>
+	<li>Element name</li>
+	<li>Attribute</li>
+	<li>Class</li>
+	<li>Comment</li>
+</ul>
+By using Element name<br>
+<w3-test-directive></w3-test-directive>
+By using Attribute name
+<div w3-test-directive></div>
+By using Class name
+<div class="w3-test-directive"></div>
+By using Comment
+<!-- directive: w3-test-directive -->
+
+<p><strong>Note:</strong> By setting the <strong>restrict</strong> property to "A", only the HTML element with the "w3-test-directive" attribute has invoked the directive.</p>
+The legal restrict values are:
+<ul>
+	<li><span style="color:red">E</span> for Element name</li>
+	<li><span style="color:red">A</span> for Attribute</li>
+	<li><span style="color:red">C</span> for Class</li>
+	<li><span style="color:red">M</span> for Comment</li>
+</ul>
+<script>
+	var app = angular.module("myApp", []);
+	app.directive("w3TestDirective", function(){
+		return {
+			restrict : "EACM",
+			replace: true,
+			template : "<h1>Made by a directive!</h1>"
+		};
+	});
+</script>
+
+</body>
+</html>

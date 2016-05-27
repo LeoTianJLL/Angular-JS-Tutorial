@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<style type="text/css">
+	input.ng-invalid {
+		background-color: red;
+	}
+</style>
+
+<form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">
+	Email:
+	<input type="email" name="myAddress" ng-model="text">
+	<span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+	<br>In the example above, the span will be displayed only if the expression in the <strong style="color:red">ng-show</strong> attribute returns <strong style="color:red">true</strong>.<br>
+	Email:
+	<input type="email" name="myAddress2" ng-model="myText" required>
+	<h1>Status</h1>
+	valid: {{myForm.myAddress2.$valid}}<br>
+	dirty: {{myForm.myAddress2.$dirty}}<br>
+	touched: {{myForm.myAddress2.$touched}}<br>
+	The <span style="color:red">ng-model</span> directive can provide status for application data (invalid, dirty, touched, error):
+	<br>
+	<br>
+	Enter your name:
+	<input name="myAddress3" ng-model="text2" required>
+</form>
+
+</body>
+</html>
