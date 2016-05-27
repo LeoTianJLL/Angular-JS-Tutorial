@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<h1>AngularJS binds data to HTML using Expressions.</h1>
+
+<h3>AngularJS Expression</h3>
+
+<div ng-app="" ng-init="quantity=1; cost=5; firstName='John'; lastName='Doe'; person={firstName:'John', lastName:'Doe'}; points=[1,15,19,2,40]">
+	<p> My first expression: {{5+5}}</p>
+	<input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}">
+	<h3>1. AngularJS Numbers</h3>
+	<p>Total in dollar: {{quantity * cost}}</p>
+	<p>Total in dollar: <span ng-bind="quantity * cost"></span></p>
+	<h3>2. AngularJS Strings</h3>
+	<p>The name is {{firstName + " " + lastName}}</p>
+	<p>The name is <span ng-bind="firstName + ' ' + lastName"></span></p>
+	<h3>3. AngularJS Objects</h3>
+	<p>The name is {{person.lastName}}</p>
+	<p>The name is <span ng-bind="person.lastName"></span></p>
+	<h3>4. AngularJS Arrays</h3>
+	<p>The third result is {{points[2]}}</p>
+	<p>The third result is <span ng-bind="points[2]"></span></p>
+</div>
+
+</body>
+</html>
