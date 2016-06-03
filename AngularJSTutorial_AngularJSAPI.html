@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<p>{{ x1 }}</p>
+	<h2>1. angular.lowercase()</h2>
+	<p>{{ x2 }}</p>
+	<h2>2. angular.uppercase()</h2>
+	<p>{{ x3 }}</p>
+	<h2>3. angular.isString()</h2>
+	<p>{{ x4 }}</p>
+	<h2>4. angular.isNumber()</h2>
+	<p>{{ x5 }}</p>
+</div>
+
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+		$scope.x1 = "John"
+		$scope.x2 = angular.lowercase($scope.x1)
+		$scope.x3 = angular.uppercase($scope.x1)
+		$scope.x4 = angular.isString($scope.x1)
+		$scope.x5 = angular.isNumber($scope.x1)
+	});
+</script>
+
+</body>
+</html>
