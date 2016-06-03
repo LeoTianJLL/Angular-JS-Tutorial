@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+<body ng-app="myApp">
+
+<style>
+	input.ng-invalid {
+		background-color: pink;
+	}
+
+	input.ng-valid {
+		background-color: lightgreen;
+	}
+
+	form.ng-pristine {
+		background-color: lightblue;
+	}
+
+	form.ng-dirty {
+		background-color: pink;
+	}
+</style>
+
+<form name="myForm">
+	<h2>1. Required</h2>
+	<input name="myInput" ng-model="myInput" required>
+	<p> The input's valid state is : </p>
+	<h1>{{ myForm.myInput.$valid }}</h1>
+
+	<h2>2. E-mail</h2>
+	<input name="myEmailInput" ng-model="myEmailInput" type="email">
+	<h1>{{ myForm.myEmailInput.$valid }}</h1>
+
+	<h2>3. Form State and Input State</h2>
+	<input name="myName" ng-model="myName" required>
+	<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The name is required</span>
+
+	<h2>4. Custom Validation</h2>
+	<input name="myCustomInput" ng-model="myCustomInput" required my-directive>
+	<p>The input's valid state is : </p>
+	<h1>{{myForm.myCustomInput.$valid}}</h1>
+</form>
+
+<script>
+	var app = angular.module('myApp', []);
+	app.directive('myDirective', function() {
+		return {
+			require: 'ngModel',
+			link: function(scope, element, attr, mCtrl){
+				function myValidation(value) {
+					if (value.indexOf("e") > -1) {
+						mCtrl.$setValidity('charE', true);
+					} else {
+						mCtrl.$setValidity('charE', false);
+					}
+					return value;
+				}
+				mCtrl.$parsers.push(myValidation)
+			}
+		}
+	});
+</script>
+
+</body>
+</html>

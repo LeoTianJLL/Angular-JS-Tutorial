@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="formCtrl">
+	<form>
+		<h2>1. Data-Binding</h2>
+		First Name: <input type="text" ng-model="firstname">
+		<p> Your entered : {{firstname}}</p>
+		<h2>2. Checkbox</h2>
+		Check to show a header:
+		<input type="checkbox" ng-model="myVar">
+		<h1 ng-show="myVar"> My Header </h1>
+		<h2>3. Radiobuttons</h2>
+		Pick a topic:
+		<input type="radio" ng-model="myVal2" value="dogs">Dogs
+		<input type="radio" ng-model="myVal2" value="tuts">Tutorials
+		<input type="radio" ng-model="myVal2" value="cars">Cars
+		<p>You selected : {{myVal2}}</p>
+		<h2>4. Selectbox</h2>
+		Select a topic:
+		<select ng-model="myVal3">
+			<option value="">
+		    <option value="dogs">Dogs
+		    <option value="tuts">Tutorials
+		    <option value="cars">Cars
+		</select>
+		<p>You selected : {{myVal3}}</p>
+	</form>
+
+	<form novalidate>
+		First Name: <br>
+		<input type="text" ng-model="user.firstName"><br>
+		Last Name: <br>
+		<input type="text" ng-model="user.lastName"><br>
+		<br>
+		<button ng-click="reset()">RESET</button>
+	</form>
+	<p>form = {{user}}</p>
+	<p>master = {{master}}</p>
+
+</div>
+
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('formCtrl', function($scope) {
+		$scope.firstname = 'John'
+		$scope.master = {firstName: "John", lastName: "Doe"};
+		$scope.reset = function(){
+			$scope.user = angular.copy($scope.master);
+		};
+		$scope.reset();
+	});
+</script>
+
+</body>
+</html>
